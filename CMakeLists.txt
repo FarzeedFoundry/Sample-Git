@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.9)
-
+ 
 set (CMAKE_CXX_STANDARD 11)
 set (CXX_STANDARD_REQUIRED)
+ 
+project(MyTestPackage)
 
-project (TestLibrary)
+add_library(MyTestPackage STATIC MyTestPackage.cpp )
+ 
+#set_target_properties(MyTestPackage PROPERTIES PUBLIC_HEADER MyTestPackage.h)
 
-add_library (TestLibrary STATIC TestLibrary.cpp)
-
-set_target_properties (TestLibrary PROPERTIES PUBLIC_HEADER TestLibrary.h)
-
+configure_file( TestLibraryPackConfig.cmake.in TestLibraryConfig.cmake @ONLY )
